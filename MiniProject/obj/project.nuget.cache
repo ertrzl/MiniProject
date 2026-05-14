@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "Mv02LVj3wPw=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\ertug\\Desktop\\New folder\\Mini\\MiniProject\\MiniProject.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\ertug\\.nuget\\packages\\newtonsoft.json\\13.0.4\\newtonsoft.json.13.0.4.nupkg.sha512"
+  ],
+  "logs": []
+}
