@@ -9,7 +9,7 @@ namespace MiniProject.Models
     internal class Product
     {
         private static int _count { get; set; }
-        public int Id { get; set; }
+        public int Id { get;  }
 
         private string _name;
         public string Name
@@ -39,7 +39,7 @@ namespace MiniProject.Models
         }
         public void PrintInfo()
         {
-            Console.WriteLine($"[{Id}] {Name} - {Price} AZN (Stock: {Stock})");
+            Console.WriteLine($"[{Id}] {_name} - {Price} AZN (Stock: {Stock})");
         }
 
     }

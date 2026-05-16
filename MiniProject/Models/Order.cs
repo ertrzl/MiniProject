@@ -11,18 +11,9 @@ namespace MiniProject.Models
     {
         public int Id { get; set; }
         public List<OrderItem> Items { get; set; } = new List<OrderItem>();
-        private string _email;
-        public string Email
-        {
-            get => _email;
-            set
-            {
-                if (value.Contains("@"))
-                    Email = value;
-                else
-                    Console.WriteLine("Error: Email must contain '@'. Try again.");
-            }
-        }
+        
+        public string Email {  get; set; }
+        
         public OrderStatus Status { get; set; }
         public DateTime OrderedAt { get; set; }
 

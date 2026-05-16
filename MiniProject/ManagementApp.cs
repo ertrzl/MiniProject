@@ -59,11 +59,11 @@ namespace MiniProject
                             break;
                         case "6":
                             Console.Clear();
-                            Console.WriteLine("Ordering product...");
+                            productService.OrderProduct();
                             break;
                         case "7":
                             Console.Clear();
-                            Console.WriteLine("Showing all orders...");
+                            productService.ShowAllOrders();
                             break;
                         case "8":
                             Console.Clear();

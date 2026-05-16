@@ -11,5 +11,7 @@ namespace MiniProject.Enums
         PENDING,
         CONFIRMED,
         COMPLETED,
+        CANCELED,
+        
     }
 }

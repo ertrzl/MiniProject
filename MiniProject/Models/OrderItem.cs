@@ -15,10 +15,14 @@ namespace MiniProject.Models
         public decimal Price { get; set; }
         public decimal SubTotal { get { return (int)(Price * Count); } }
 
-        public OrderItem()
+        
+        public OrderItem(Product product, int count)
         {
             _count++;
             Id = _count;
+            Product = product;
+            Count = count;
+            Price = product.Price;
         }
     }
 }
