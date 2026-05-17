@@ -8,8 +8,8 @@ namespace MiniProject.Models
 {
     internal class OrderItem
     {
-        private static int _count { get; set; }
-        public int Id { get; set; }
+       
+        public Guid Id { get; set; }
         public Product Product { get; set; }
         public int Count { get; set; }
         public decimal Price { get; set; }
@@ -18,8 +18,8 @@ namespace MiniProject.Models
         
         public OrderItem(Product product, int count)
         {
-            _count++;
-            Id = _count;
+            
+            Id = Guid.NewGuid();
             Product = product;
             Count = count;
             Price = product.Price;

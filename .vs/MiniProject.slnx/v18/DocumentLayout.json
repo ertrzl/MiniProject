@@ -3,22 +3,6 @@
   "WorkspaceRootPath": "C:\\Users\\ertug\\Desktop\\MiniProject\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B8A9F900-0581-04F9-EB52-155E156CCCD6}|MiniProject\\MiniProject.csproj|c:\\users\\ertug\\desktop\\miniproject\\miniproject\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B8A9F900-0581-04F9-EB52-155E156CCCD6}|MiniProject\\MiniProject.csproj|solutionrelative:miniproject\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B8A9F900-0581-04F9-EB52-155E156CCCD6}|MiniProject\\MiniProject.csproj|c:\\users\\ertug\\desktop\\miniproject\\miniproject\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B8A9F900-0581-04F9-EB52-155E156CCCD6}|MiniProject\\MiniProject.csproj|solutionrelative:miniproject\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B8A9F900-0581-04F9-EB52-155E156CCCD6}|MiniProject\\MiniProject.csproj|c:\\users\\ertug\\desktop\\miniproject\\miniproject\\enums\\orderstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B8A9F900-0581-04F9-EB52-155E156CCCD6}|MiniProject\\MiniProject.csproj|solutionrelative:miniproject\\enums\\orderstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B8A9F900-0581-04F9-EB52-155E156CCCD6}|MiniProject\\MiniProject.csproj|c:\\users\\ertug\\desktop\\miniproject\\miniproject\\models\\orderitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B8A9F900-0581-04F9-EB52-155E156CCCD6}|MiniProject\\MiniProject.csproj|solutionrelative:miniproject\\models\\orderitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{B8A9F900-0581-04F9-EB52-155E156CCCD6}|MiniProject\\MiniProject.csproj|c:\\users\\ertug\\desktop\\miniproject\\miniproject\\services\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B8A9F900-0581-04F9-EB52-155E156CCCD6}|MiniProject\\MiniProject.csproj|solutionrelative:miniproject\\services\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -27,12 +11,32 @@
       "RelativeMoniker": "D:0:0:{B8A9F900-0581-04F9-EB52-155E156CCCD6}|MiniProject\\MiniProject.csproj|solutionrelative:miniproject\\helper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B8A9F900-0581-04F9-EB52-155E156CCCD6}|MiniProject\\MiniProject.csproj|c:\\users\\ertug\\desktop\\miniproject\\miniproject\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B8A9F900-0581-04F9-EB52-155E156CCCD6}|MiniProject\\MiniProject.csproj|solutionrelative:miniproject\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B8A9F900-0581-04F9-EB52-155E156CCCD6}|MiniProject\\MiniProject.csproj|c:\\users\\ertug\\desktop\\miniproject\\miniproject\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B8A9F900-0581-04F9-EB52-155E156CCCD6}|MiniProject\\MiniProject.csproj|solutionrelative:miniproject\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B8A9F900-0581-04F9-EB52-155E156CCCD6}|MiniProject\\MiniProject.csproj|c:\\users\\ertug\\desktop\\miniproject\\miniproject\\models\\orderitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B8A9F900-0581-04F9-EB52-155E156CCCD6}|MiniProject\\MiniProject.csproj|solutionrelative:miniproject\\models\\orderitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B8A9F900-0581-04F9-EB52-155E156CCCD6}|MiniProject\\MiniProject.csproj|c:\\users\\ertug\\desktop\\miniproject\\miniproject\\enums\\orderstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B8A9F900-0581-04F9-EB52-155E156CCCD6}|MiniProject\\MiniProject.csproj|solutionrelative:miniproject\\enums\\orderstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B8A9F900-0581-04F9-EB52-155E156CCCD6}|MiniProject\\MiniProject.csproj|c:\\users\\ertug\\desktop\\miniproject\\miniproject\\managementapp.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B8A9F900-0581-04F9-EB52-155E156CCCD6}|MiniProject\\MiniProject.csproj|solutionrelative:miniproject\\managementapp.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B8A9F900-0581-04F9-EB52-155E156CCCD6}|MiniProject\\MiniProject.csproj|c:\\users\\ertug\\desktop\\miniproject\\miniproject\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B8A9F900-0581-04F9-EB52-155E156CCCD6}|MiniProject\\MiniProject.csproj|solutionrelative:miniproject\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B8A9F900-0581-04F9-EB52-155E156CCCD6}|MiniProject\\MiniProject.csproj|c:\\users\\ertug\\desktop\\miniproject\\miniproject\\jsconfig1.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{B8A9F900-0581-04F9-EB52-155E156CCCD6}|MiniProject\\MiniProject.csproj|solutionrelative:miniproject\\jsconfig1.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B8A9F900-0581-04F9-EB52-155E156CCCD6}|MiniProject\\MiniProject.csproj|c:\\users\\ertug\\desktop\\miniproject\\miniproject\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B8A9F900-0581-04F9-EB52-155E156CCCD6}|MiniProject\\MiniProject.csproj|solutionrelative:miniproject\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B8A9F900-0581-04F9-EB52-155E156CCCD6}|MiniProject\\MiniProject.csproj|c:\\users\\ertug\\desktop\\miniproject\\miniproject\\miniproject.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
@@ -49,7 +53,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -57,33 +61,46 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 7,
+              "Title": "jsconfig1.json",
+              "DocumentMoniker": "C:\\Users\\ertug\\Desktop\\MiniProject\\MiniProject\\jsconfig1.json",
+              "RelativeDocumentMoniker": "MiniProject\\jsconfig1.json",
+              "ToolTip": "C:\\Users\\ertug\\Desktop\\MiniProject\\MiniProject\\jsconfig1.json",
+              "RelativeToolTip": "MiniProject\\jsconfig1.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-05-17T13:32:19.351Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "Helper.cs",
               "DocumentMoniker": "C:\\Users\\ertug\\Desktop\\MiniProject\\MiniProject\\Helper.cs",
               "RelativeDocumentMoniker": "MiniProject\\Helper.cs",
               "ToolTip": "C:\\Users\\ertug\\Desktop\\MiniProject\\MiniProject\\Helper.cs",
               "RelativeToolTip": "MiniProject\\Helper.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAC0AAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-15T15:41:53.809Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 6,
               "Title": "Order.cs",
               "DocumentMoniker": "C:\\Users\\ertug\\Desktop\\MiniProject\\MiniProject\\Models\\Order.cs",
               "RelativeDocumentMoniker": "MiniProject\\Models\\Order.cs",
               "ToolTip": "C:\\Users\\ertug\\Desktop\\MiniProject\\MiniProject\\Models\\Order.cs",
               "RelativeToolTip": "MiniProject\\Models\\Order.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAADkAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-14T11:28:45.031Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "Microsoft.Common.CurrentVersion.targets",
               "DocumentMoniker": "C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
@@ -91,37 +108,38 @@
               "RelativeToolTip": "..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
               "ViewState": "AgIAAPcUAAAAAAAAAIAwwBIVAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
-              "WhenOpened": "2026-05-14T11:25:51.33Z"
+              "WhenOpened": "2026-05-14T11:25:51.33Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
               "Title": "ProductService.cs",
               "DocumentMoniker": "C:\\Users\\ertug\\Desktop\\MiniProject\\MiniProject\\Services\\ProductService.cs",
               "RelativeDocumentMoniker": "MiniProject\\Services\\ProductService.cs",
               "ToolTip": "C:\\Users\\ertug\\Desktop\\MiniProject\\MiniProject\\Services\\ProductService.cs",
               "RelativeToolTip": "MiniProject\\Services\\ProductService.cs",
-              "ViewState": "AgIAAJUAAAAAAAAAAAAgwJMAAAAgAAAAAAAAAA==",
+              "ViewState": "AgIAACMBAAAAAAAAAAAkwFoBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-14T10:38:10.575Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 5,
               "Title": "ManagementApp.cs",
               "DocumentMoniker": "C:\\Users\\ertug\\Desktop\\MiniProject\\MiniProject\\ManagementApp.cs",
               "RelativeDocumentMoniker": "MiniProject\\ManagementApp.cs",
               "ToolTip": "C:\\Users\\ertug\\Desktop\\MiniProject\\MiniProject\\ManagementApp.cs",
               "RelativeToolTip": "MiniProject\\ManagementApp.cs",
-              "ViewState": "AgIAABsAAAAAAAAAAAAAAEEAAAA7AAAAAAAAAA==",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAACQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-13T19:29:38.918Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "OrderStatus.cs",
               "DocumentMoniker": "C:\\Users\\ertug\\Desktop\\MiniProject\\MiniProject\\Enums\\OrderStatus.cs",
               "RelativeDocumentMoniker": "MiniProject\\Enums\\OrderStatus.cs",
@@ -140,27 +158,27 @@
               "RelativeDocumentMoniker": "MiniProject\\Models\\OrderItem.cs",
               "ToolTip": "C:\\Users\\ertug\\Desktop\\MiniProject\\MiniProject\\Models\\OrderItem.cs",
               "RelativeToolTip": "MiniProject\\Models\\OrderItem.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-13T19:10:27.012Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "Product.cs",
               "DocumentMoniker": "C:\\Users\\ertug\\Desktop\\MiniProject\\MiniProject\\Models\\Product.cs",
               "RelativeDocumentMoniker": "MiniProject\\Models\\Product.cs",
               "ToolTip": "C:\\Users\\ertug\\Desktop\\MiniProject\\MiniProject\\Models\\Product.cs",
               "RelativeToolTip": "MiniProject\\Models\\Product.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACEAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAkwCMAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-13T19:08:29.891Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "MiniProject.csproj",
               "DocumentMoniker": "C:\\Users\\ertug\\Desktop\\MiniProject\\MiniProject\\MiniProject.csproj",
               "RelativeDocumentMoniker": "MiniProject\\MiniProject.csproj",
@@ -168,11 +186,12 @@
               "RelativeToolTip": "MiniProject\\MiniProject.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2026-05-13T19:08:06.769Z"
+              "WhenOpened": "2026-05-13T19:08:06.769Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 8,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\ertug\\Desktop\\MiniProject\\MiniProject\\Program.cs",
               "RelativeDocumentMoniker": "MiniProject\\Program.cs",

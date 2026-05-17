@@ -21,7 +21,7 @@ namespace MiniProject
                 while (true)
                 {
 
-                    Console.WriteLine("1. Create Product\n2. Delete Product\n3. Get Product By Id\n4. Show All Products\n5. Refill Product\n6. Order Product\n7. Show All Orders\n8. Change Order Status\n\n0. Exit");
+                    Console.WriteLine("1. Create Product\n2. Delete Product\n3. Get Product By Id\n4. Show All Products\n5. Refill Product\n6. Order Product\n7. Show All Orders\n8. Change Order Status\n9. Show According To Email\r\n\n\n0. Exit");
 
                     Console.Write("Select an option: ");
                     var choice = Console.ReadLine();
@@ -67,7 +67,11 @@ namespace MiniProject
                             break;
                         case "8":
                             Console.Clear();
-                            Console.WriteLine("Changing order status...");
+                            productService.ChangeOrderStatus();
+                            break;
+                        case "9":
+                            Console.Clear();
+                            productService.ShowCustomerOrders();
                             break;
                         default:
                             Console.Clear();

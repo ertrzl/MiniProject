@@ -9,7 +9,7 @@ namespace MiniProject.Models
 {
     internal class Order
     {
-        public int Id { get; set; }
+        public Guid Id { get;  }
         public List<OrderItem> Items { get; set; } = new List<OrderItem>();
         
         public string Email {  get; set; }
@@ -18,6 +18,11 @@ namespace MiniProject.Models
         public DateTime OrderedAt { get; set; }
 
         public decimal Total => Items.Sum(i => i.SubTotal);
+
+        public Order()
+        {
+            Id= Guid.NewGuid();
+        }
 
         public void PrintInfo()
         {

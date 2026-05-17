@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MiniProject.Enums;
+using MiniProject.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace MiniProject
 {
-    public static class Helper
+    internal class Helper
     {
         public static string GetEmail()
         {
-            while(true)
+            while (true)
             {
                 Console.WriteLine("Enter customer email: ");
                 string? email = Console.ReadLine();
@@ -21,7 +23,45 @@ namespace MiniProject
                 }
                 Console.WriteLine("Error: Invalid email. Please try again.");
             }
-            
+
         }
+
+
+        public static bool AskToContinue()
+        {
+            Console.Write("Add another product? (y to continue / any key to finish): ");
+            string cont = Console.ReadLine()?.Trim().ToLower();
+            return cont == "y";
+        }
+        public static void PrintStatusWithColor(OrderStatus status)
+        {
+            switch (status)
+            {
+                case OrderStatus.PENDING:
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    break;
+                case OrderStatus.CONFIRMED: 
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    break;
+                case OrderStatus.COMPLETED: 
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    break;
+                default:
+                    Console.ResetColor();
+                    break;
+            }
+
+            Console.WriteLine($"STATUS: [{status}]");
+            Console.ResetColor();
+        }
+
     }
 }
+  
+        
+    
+
+
+
+
+
