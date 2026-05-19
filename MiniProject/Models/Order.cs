@@ -9,7 +9,7 @@ namespace MiniProject.Models
 {
     internal class Order
     {
-        public Guid Id { get;  }
+        public Guid Id { get; init; }
         public List<OrderItem> Items { get; set; } = new List<OrderItem>();
         
         public string Email {  get; set; }
@@ -26,7 +26,7 @@ namespace MiniProject.Models
 
         public void PrintInfo()
         {
-            Console.WriteLine($"Order ID: {Id} | Date: {OrderedAt:dd.MM.yyyy HH:mm} | Customer: {Email} | Status: {Status} | Items: {string.Join(", ", Items.Select(i => $"{i.Product.Name} (x{i.Count})"))} | Total: {Total} AZN");
+            Console.WriteLine($"Order ID: {Id} | Date: {OrderedAt:dd.MM.yyyy HH:mm} | Customer: {Email} | Status: {Status} | Items: {string.Join(", ", Items.Select(i => $"{i.ProductName} (x{i.Count})"))} | Total: {Total} AZN");
             Console.WriteLine("-------------------------------------------");
             Console.WriteLine($"GRAND TOTAL: {Total} AZN");
             Console.WriteLine("-------------------------------------------");

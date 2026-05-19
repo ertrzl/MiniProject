@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace MiniProject.Models
 {
-    internal class Product
+    public class Product
     {
         
-        public Guid Id { get;  }
+        public Guid Id { get; init; }
 
         private string _name;
         public string Name

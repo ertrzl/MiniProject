@@ -1,5 +1,5 @@
 ﻿using MiniProject.Models;
-
+using MiniProject.Services;
 using MiniProject.Utilities;
 using System;
 using System.Collections.Generic;
@@ -13,16 +13,20 @@ namespace MiniProject
 {
     internal class ManagementApp
     {
+       
         public void Run()
         {
             {
                 ProductService productService = new ProductService();
 
+                OrderService orderService = new OrderService();
+
                 while (true)
                 {
-
-                    Console.WriteLine("1. Create Product\n2. Delete Product\n3. Get Product By Id\n4. Show All Products\n5. Refill Product\n6. Order Product\n7. Show All Orders\n8. Change Order Status\n9. Show According To Email\r\n\n\n0. Exit");
-
+                    
+                    productService.CheckLowStockAlert();
+                    Console.WriteLine("1. Create Product\n2. Delete Product\n3. Get Product By Id\n4. Show All Products\n5. Refill Product\n6. Order Product\n7. Show All Orders\n8. Change Order Status\n9. Show According To Email\n10. Show Best Sellers\n11. Show Financial Report\n\n\n0. Exit");
+                    
                     Console.Write("Select an option: ");
                     var choice = Console.ReadLine();
                     if (string.IsNullOrWhiteSpace(choice)) continue;
@@ -59,19 +63,27 @@ namespace MiniProject
                             break;
                         case "6":
                             Console.Clear();
-                            productService.OrderProduct();
+                            orderService.OrderProduct();
                             break;
                         case "7":
                             Console.Clear();
-                            productService.ShowAllOrders();
+                            orderService.ShowAllOrders();
                             break;
                         case "8":
                             Console.Clear();
-                            productService.ChangeOrderStatus();
+                            orderService.ChangeOrderStatus();
                             break;
                         case "9":
                             Console.Clear();
-                            productService.ShowCustomerOrders();
+                            orderService.ShowCustomerOrders();
+                            break;
+                        case "10":
+                            Console.Clear();
+                            orderService.ShowBestSellers();
+                            break;
+                        case "11":
+                            Console.Clear();
+                            orderService.ShowFinancialReport();
                             break;
                         default:
                             Console.Clear();

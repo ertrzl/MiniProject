@@ -1,5 +1,6 @@
 ﻿using MiniProject.Enums;
 using MiniProject.Models;
+using MiniProject.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,8 +13,28 @@ namespace MiniProject.Utilities
     public class ProductService
 
     {
-        private readonly List<Product> _products = new List<Product>();
+        private List<Product> _products = new List<Product>();
         private List<Order> _orders = new List<Order>();
+
+        private readonly string _productFilePath = @"C:\Users\ertug\Desktop\MiniProject\MiniProject\Files\Product.json";
+        private readonly string _ordersFilePath = @"C:\Users\ertug\Desktop\MiniProject\MiniProject\Files\Orders.json";
+
+        public ProductService()
+        {
+            LoadData();
+        }
+
+        //private void LoadData()
+        //{
+        //    _products = Repository.Deserialize<Product>(_productFilePath) ?? new List<Product>();
+        //    _orders = Repository.Deserialize<Order>(_ordersFilePath) ?? new List<Order>();
+        //}
+
+        //private void SaveData()
+        //{
+        //    Repository.Serialize(_productFilePath, _products);
+        //    Repository.Serialize(_ordersFilePath, _orders);
+        //}
 
         public void CreateProduct()
         {
@@ -56,6 +77,7 @@ namespace MiniProject.Utilities
                 Stock = stock
             };
             _products.Add(newProduct);
+            SaveData();
 
             Console.WriteLine("\nProduct successfully created!");
             newProduct.PrintInfo();
@@ -81,6 +103,7 @@ namespace MiniProject.Utilities
             }
 
             _products.Remove(product);
+            SaveData();
             Console.WriteLine($"Product '{product.Name}' deleted from memory!");
         }
 
@@ -107,18 +130,42 @@ namespace MiniProject.Utilities
         }
         public void ShowAllProducts()
         {
-            if (_products.Count == 0)
-            {
-                Console.WriteLine("No products available.");
-                return;
-            }
-            Console.WriteLine("Available Products:");
+            Console.Clear();
+            Console.WriteLine("==================================================================");
+            Console.WriteLine(string.Format("| {0,-36} | {1,-10} | {2,-8} |", "PRODUCT ID", "NAME", "STOCK"));
+            Console.WriteLine("==================================================================");
+
             foreach (var product in _products)
             {
-                string stockStatus = product.Stock == 0 ? "Out of Stock" : product.Stock.ToString();
-                product.PrintInfo();
+                if (product.Stock <= 5)
+                {
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Green;
+                }
+
+                Console.WriteLine(string.Format("| {0,-36} | {1,-10} | {2,-8} |", product.Id, product.Name, product.Stock));
+                Console.ResetColor();
             }
+
+            Console.WriteLine("==================================================================");
         }
+        //public void ShowAllProducts()
+        //{
+        //    if (_products.Count == 0)
+        //    {
+        //        Console.WriteLine("No products available.");
+        //        return;
+        //    }
+        //    Console.WriteLine("Available Products:");
+        //    foreach (var product in _products)
+        //    {
+        //        string stockStatus = product.Stock == 0 ? "Out of Stock" : product.Stock.ToString();
+        //        product.PrintInfo();
+        //    }
+        //}
         public void RefillProduct()
         {
             Console.Write("Enter the ID of the product you want to refill: ");
@@ -144,204 +191,63 @@ namespace MiniProject.Utilities
             }
 
             product.Stock += amount;
+            SaveData();
             Console.WriteLine($"{amount} units added. New stock for '{product.Name}': {product.Stock}");
         }
-
-        public void OrderProduct()
+        private void LoadData()
         {
-            string customerEmail;
-
-            while (true)
-            {
-                customerEmail = Helper.GetEmail();
-                Order newOrder = new Order
-                {
-                    Email = customerEmail,
-                    Status = OrderStatus.PENDING,
-                    OrderedAt = DateTime.Now
-                };
-
-                bool isOrdering = true;
-                while (isOrdering)
-                {
-                    Console.WriteLine("Enter Product ID: ");
-                    string? input = Console.ReadLine()?.Trim();
-
-                    if (input == "0")
-                    {
-                        Console.WriteLine("Order cancelled. Returning to menu...");
-                        foreach (var orderItem in newOrder.Items)
-                        {
-                            orderItem.Product.Stock += orderItem.Count;
-                        }
-
-                        return;
-                    }
-
-                    if (!Guid.TryParse(input, out Guid productId))
-                    {
-                        Console.WriteLine("Invalid input. Please enter a valid GUID ID.");
-                        continue;
-                    }
-
-                    Product product = _products.FirstOrDefault(p => p.Id == productId);
-
-                    if (product == null)
-                    {
-                        Console.WriteLine($"Product With ID {productId} not found.");
-                        continue;
-                    }
-
-                    Console.Write($"How many '{product.Name}' do you want? (Available: {product.Stock}): ");
-                    if (!int.TryParse(Console.ReadLine()?.Trim(), out int count) || count <= 0)
-                    {
-                        Console.WriteLine("Invalid quantity.");
-                        continue;
-                    }
-
-                    if (count > product.Stock)
-                    {
-                        Console.WriteLine($"Not enough stock. Available: {product.Stock}. Order not placed.");
-                        continue;
-                    }
-
-                    product.Stock -= count;
-
-                    var item = new OrderItem(product, count);
-                    newOrder.Items.Add(item);
-
-                    Console.WriteLine($"'{product.Name}' x{count} added. SubTotal: {item.SubTotal:F2}");
-
-                    if (!Helper.AskToContinue())
-                    {
-                        break;
-                    }
-                }
-
-                if (newOrder.Items.Count == 0)
-                {
-                    Console.WriteLine("No items selected. Order was not created.");
-                    return;
-                }
-
-                _orders.Add(newOrder);
-                Console.WriteLine("\nOrder placed successfully!");
-                newOrder.PrintInfo();
-                break;
-            }
+            _products = Repository.Deserialize<Product>(_productFilePath) ?? new List<Product>();
         }
 
-
-
-        public void ShowAllOrders()
+        private void SaveData()
         {
-            if (_orders == null || _orders.Count == 0)
+            Repository.Serialize(_productFilePath, _products);
+        }
+
+        public void CheckLowStockAlert()
+        {
+            int threshold = 5;
+            var lowStockProducts = _products.Where(p => p.Stock <= threshold).ToList();
+
+            if (lowStockProducts.Count == 0)
             {
-                Console.WriteLine("\n--- No orders found in the system. ---");
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("\n[INFO] All products have sufficient stock levels.");
+                Console.ResetColor();
                 return;
             }
 
-            Console.WriteLine("\n================ ALL ORDERS LIST ================");
-            foreach (var order in _orders)
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("\n⚠️  ============= LOW STOCK ALERT =============");
+            Console.WriteLine($"The following products have less than {threshold} items left!");
+            Console.WriteLine("==============================================");
+            Console.ResetColor();
+
+            foreach (var prod in lowStockProducts)
             {
-                Console.WriteLine($"Order ID: {order.Id} | Customer: {order.Email}");
-                Console.WriteLine($"Date: {order.OrderedAt:yyyy-MM-dd HH:mm}");
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.Write($"- Product: {prod.Name} ");
+                Console.ResetColor();
 
-                Helper.PrintStatusWithColor(order.Status);
-
-                Console.WriteLine("Items ordered:");
-                foreach (var item in order.Items)
-                {
-                    Console.WriteLine($"  - {item.Product.Name} (Quantity: {item.Count}) | SubTotal: {item.SubTotal} AZN");
-                }
-                Console.WriteLine($"TOTAL AMOUNT: {order.Total} AZN");
-                Console.WriteLine("-------------------------------------------------");
+                Console.Write($"| ID: {prod.Id} | CURRENT STOCK: ");
+                //Console.WriteLine($"| ID: {prod.Id} | CURRENT STOCK: {prod.Stock} left");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"{prod.Stock} left");
+                Console.ResetColor();
             }
-            Console.WriteLine("================ END OF ORDERS ==================\n");
+
+            //Console.ForegroundColor = ConsoleColor.Red;
+            //Console.WriteLine("==============================================\n");
+            //Console.ResetColor();
         }
 
-        public void ChangeOrderStatus()
-        {
-            Console.Write("Enter Order Id: ");
-            if (!Guid.TryParse(Console.ReadLine(), out Guid id))
-            {
-                Console.WriteLine("Error: Please enter a valid order Id!");
-                return;
-            }
-
-            Order order = _orders.FirstOrDefault(o => o.Id == id);
-
-            if (order == null)
-            {
-                Console.WriteLine($"Error: Order with ID {id} not found.");
-                return;
-            }
-
-            Console.Write("Current");
-            Helper.PrintStatusWithColor(order.Status);
-
-            Console.WriteLine("Select New Status:");
-            Console.WriteLine("1. Pending");
-            Console.WriteLine("2. Confirmed");
-            Console.WriteLine("3. Completed");
-            Console.Write("Enter choice (1-3): ");
-
-            string choice = Console.ReadLine()?.Trim();
-
-            switch (choice)
-            {
-                case "1":
-                    order.Status = OrderStatus.PENDING;
-                    break;
-                case "2":
-                    order.Status = OrderStatus.CONFIRMED;
-                    break;
-                case "3":
-                    order.Status = OrderStatus.COMPLETED;
-                    break;
-                default:
-                    Console.WriteLine("Error: Invalid selection. Status not changed.");
-                    return;
-            }
-
-            Console.WriteLine($"\nOrder status successfully updated to [{order.Status}]!");
-        }
-        public void ShowCustomerOrders()
-        {
-            string customerEmail = Helper.GetEmail();
-            var customerOrders = _orders.Where(o => o.Email.ToLower() == customerEmail.ToLower()).ToList();
-
-            if (customerOrders.Count == 0)
-            {
-                Console.WriteLine($"\n--- No orders found for customer: {customerEmail} ---");
-                return;
-            }
-
-            Console.WriteLine($"\n================ ORDERS FOR: {customerEmail} ================");
-            foreach (var order in customerOrders)
-            {
-                Console.WriteLine($"Order ID: {order.Id}");
-                Console.WriteLine($"Date: {order.OrderedAt:yyyy-MM-dd HH:mm}");
-
-                Helper.PrintStatusWithColor(order.Status);
-
-                Console.WriteLine("Items ordered:");
-                foreach (var item in order.Items)
-                {
-                    Console.WriteLine($"  - {item.Product.Name} (Quantity: {item.Count}) | SubTotal: {item.SubTotal} AZN");
-                }
-                Console.WriteLine($"TOTAL AMOUNT: {order.Total} AZN");
-                Console.WriteLine("-------------------------------------------------");
-            }
-            Console.WriteLine("=================== END OF LIST ===================\n");
-        }
     }
-
 }
 
-            
 
-            
+
+
+
 
 
 

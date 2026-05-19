@@ -6,21 +6,24 @@ using System.Threading.Tasks;
 
 namespace MiniProject.Models
 {
-    internal class OrderItem
+    public class OrderItem
     {
-       
         public Guid Id { get; set; }
-        public Product Product { get; set; }
+        public Guid ProductId { get; set; } 
+        public string ProductName { get; set; }
         public int Count { get; set; }
         public decimal Price { get; set; }
-        public decimal SubTotal { get { return (int)(Price * Count); } }
+        public decimal SubTotal => Price * Count;
 
-        
+        public OrderItem()
+        {
+        }
+
         public OrderItem(Product product, int count)
         {
-            
             Id = Guid.NewGuid();
-            Product = product;
+            ProductId = product.Id; 
+            ProductName = product.Name;
             Count = count;
             Price = product.Price;
         }
