@@ -23,7 +23,7 @@ namespace MiniProject.Repositories
             }
         }
 
-        public static List<T> Deserialize<T>(string  filePath)
+        public static List<T> Deserialize<T>(string filePath)
         {
             if (!File.Exists(filePath))
             {

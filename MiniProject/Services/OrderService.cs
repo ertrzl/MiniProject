@@ -1,9 +1,11 @@
 ﻿using MiniProject.Enums;
 using MiniProject.Models;
 using MiniProject.Repositories;
+using MiniProject.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -38,6 +40,8 @@ namespace MiniProject.Services
 
             while (true)
             {
+                ProductService productService = new ProductService();
+                productService.ShowAllProducts();
                 customerEmail = Helper.GetEmail();
                 Order newOrder = new Order
                 {
@@ -51,6 +55,12 @@ namespace MiniProject.Services
                 {
                     Console.WriteLine("Enter Product ID: ");
                     string? input = Console.ReadLine()?.Trim();
+
+                    if (input?.ToLower() == "menu")
+                    {
+                        Console.WriteLine("Returning to menu...");
+                        return;
+                    }
 
                     if (input == "0")
                     {
@@ -96,10 +106,19 @@ namespace MiniProject.Services
 
                     product.Stock -= count;
 
-                    OrderItem item = new OrderItem(product, count);
-                    newOrder.Items.Add(item);
+                    var existingItem = newOrder.Items.FirstOrDefault(item => item.ProductId == product.Id);
 
-                    Console.WriteLine($"'{item.ProductName}' x{count} added. SubTotal: {item.SubTotal:F2}");
+                    if (existingItem != null)
+                    {
+                        existingItem.Count += count;
+                        Console.WriteLine($"Updated '{existingItem.ProductName}' total quantity to x{existingItem.Count}. SubTotal: {existingItem.SubTotal:F2}");
+                    }
+                    else
+                    {
+                        OrderItem item = new OrderItem(product, count);
+                        newOrder.Items.Add(item);
+                        Console.WriteLine($"'{item.ProductName}' x{count} added. SubTotal: {item.SubTotal:F2}");
+                    }
 
                     if (!Helper.AskToContinue())
                     {
@@ -112,7 +131,6 @@ namespace MiniProject.Services
                     Console.WriteLine("No items selected. Order was not created.");
                     return;
                 }
-
 
                 _orders.Add(newOrder);
                 SaveData();
@@ -297,8 +315,7 @@ namespace MiniProject.Services
         public void ShowFinancialReport()
         {
             var successfulOrders = _orders
-                .Where(o => o.Status == OrderStatus.CONFIRMED || o.Status == OrderStatus.COMPLETED)
-                .ToList();
+                .Where(o => o.Status == OrderStatus.CONFIRMED || o.Status == OrderStatus.COMPLETED).ToList();  
 
             if (successfulOrders.Count == 0)
             {

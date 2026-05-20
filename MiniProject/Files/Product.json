@@ -1,8 +1,1 @@
-[
-  {
-    "Id": "91c6778f-edff-45d2-a727-0b4d8b51c832",
-    "Name": "Alma",
-    "Price": 5.0,
-    "Stock": 135
-  }
-]
+[{"Id":"89c51e72-a00f-4bbd-8dab-376a62bc37bb","Name":"Armud","Price":50.0,"Stock":25},{"Id":"dfc4892d-dcec-4eaa-b8c3-3c0e0bd52d04","Name":"Snickers","Price":10.0,"Stock":5},{"Id":"bb9ffdb8-092b-4cea-8e4e-3556ff2f9dbe","Name":"Qarpiz","Price":50.0,"Stock":50}]

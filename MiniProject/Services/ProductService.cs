@@ -14,10 +14,10 @@ namespace MiniProject.Utilities
 
     {
         private List<Product> _products = new List<Product>();
-        private List<Order> _orders = new List<Order>();
+        //private List<Order> _orders = new List<Order>();
 
         private readonly string _productFilePath = @"C:\Users\ertug\Desktop\MiniProject\MiniProject\Files\Product.json";
-        private readonly string _ordersFilePath = @"C:\Users\ertug\Desktop\MiniProject\MiniProject\Files\Orders.json";
+        //private readonly string _ordersFilePath = @"C:\Users\ertug\Desktop\MiniProject\MiniProject\Files\Orders.json";
 
         public ProductService()
         {
@@ -38,36 +38,83 @@ namespace MiniProject.Utilities
 
         public void CreateProduct()
         {
-            Console.WriteLine("Enter Product Name");
-            string name = Console.ReadLine();
+            string name = string.Empty;
+            decimal price = 0;
+            int stock = 0;
 
-            if (string.IsNullOrWhiteSpace(name))
+            while (true)
             {
-                Console.WriteLine("Error: Product name cannot be empty.");
-                return;
-            }
-            if (name.All(char.IsDigit))
-            {
-                Console.WriteLine("Error: Product name cannot be a number.");
-                return;
-            }
-            if (_products.Any(p => p.Name.ToLower() == name.ToLower()))
-            {
-                Console.WriteLine("Error: A product with this name already exists.");
-                return;
+                Console.WriteLine("Enter Product Name (or write 'menu' to return): ");
+                string? input = Console.ReadLine()?.Trim();
+
+                if (input?.ToLower() == "menu")
+                {
+                    Console.WriteLine("Returning to menu...");
+                    return;
+                }
+
+                if (string.IsNullOrWhiteSpace(input))
+                {
+                    Console.WriteLine("Error: Product name cannot be empty. Please try again.\n");
+                    continue;
+                }
+
+                if (input.All(char.IsDigit))
+                {
+                    Console.WriteLine("Error: Product name cannot be a number. Please try again.\n");
+                    continue;
+                }
+
+                if (_products.Any(p => p.Name.ToLower() == input.ToLower()))
+                {
+                    Console.WriteLine("Error: A product with this name already exists. Please try again.\n");
+                    continue;
+                }
+
+                name = input;
+                break;
             }
 
-            Console.Write("Enter Price: ");
-            if (!decimal.TryParse(Console.ReadLine(), out decimal price) || price <= 0)
+            while (true)
             {
-                Console.WriteLine("Error: Please enter a valid price!");
-                return;
+                Console.Write("Enter Price:");
+                string? priceInput = Console.ReadLine()?.Trim();
+
+                if (priceInput?.ToLower() == "menu")
+                {
+                    Console.WriteLine("Returning to menu...");
+                    return;
+                }
+
+                if (!decimal.TryParse(priceInput, out decimal inputPrice) || inputPrice <= 0)
+                {
+                    Console.WriteLine("Error: Please enter a valid positive price! Try again.\n");
+                    continue;
+                }
+
+                price = inputPrice;
+                break;
             }
-            Console.Write("Enter Stock: ");
-            if (!int.TryParse(Console.ReadLine(), out int stock) || stock < 0)
+
+            while (true)
             {
-                Console.WriteLine("Error: Please enter a valid stock amount!");
-                return;
+                Console.Write("Enter Stock:");
+                string? stockInput = Console.ReadLine()?.Trim();
+
+                if (stockInput?.ToLower() == "menu")
+                {
+                    Console.WriteLine("Returning to menu...");
+                    return;
+                }
+
+                if (!int.TryParse(stockInput, out int inputStock) || inputStock <= 0)
+                {
+                    Console.WriteLine("Error: Please enter a valid stock amount! Try again.\n");
+                    continue;
+                }
+
+                stock = inputStock;
+                break;
             }
 
             Product newProduct = new Product
@@ -76,60 +123,92 @@ namespace MiniProject.Utilities
                 Price = price,
                 Stock = stock
             };
+
             _products.Add(newProduct);
             SaveData();
 
             Console.WriteLine("\nProduct successfully created!");
             newProduct.PrintInfo();
-
-
         }
+
 
         public void DeleteProduct()
         {
-            Console.Write("Enter the ID of the product you want to delete: ");
-            if (!Guid.TryParse(Console.ReadLine(), out Guid id))
+            Product productToDelete = null;
+
+            while (true)
             {
-                Console.WriteLine("Error: Please enter a valid product Id!");
-                return;
+                Console.Write("Enter the ID of the product you want to delete: ");
+                string? input = Console.ReadLine()?.Trim();
+
+                if (input?.ToLower() == "menu")
+                {
+                    Console.WriteLine("Returning to menu...");
+                    return;
+                }
+
+                if (!Guid.TryParse(input, out Guid id))
+                {
+                    Console.WriteLine("Error: Please enter a valid product Id! Try again.\n");
+                    continue;
+                }
+
+                Product product = _products.FirstOrDefault(p => p.Id == id);
+
+                if (product == null)
+                {
+                    Console.WriteLine($"Error: Product with ID {id} not found. Please try again.\n");
+                    continue;
+                }
+
+                productToDelete = product;
+                break;
             }
 
-            Product product = _products.FirstOrDefault(p => p.Id == id);
-
-            if (product == null)
-            {
-                Console.WriteLine($"Error: Product with ID {id} not found.");
-                return;
-            }
-
-            _products.Remove(product);
+            _products.Remove(productToDelete);
             SaveData();
-            Console.WriteLine($"Product '{product.Name}' deleted from memory!");
+            Console.WriteLine($"Product '{productToDelete.Name}' deleted from memory!");
         }
 
 
         public void GetProductById()
         {
-            Console.Write("Enter Product Id: ");
-            if (!Guid.TryParse(Console.ReadLine(), out Guid id))
+            Product productToShow = null;
+
+            while (true)
             {
-                Console.WriteLine("Error: Please enter a valid product Id!");
-                return;
+                Console.Write("Enter Product Id: ");
+                string? input = Console.ReadLine()?.Trim();
+
+                if (input?.ToLower() == "menu")
+                {
+                    Console.WriteLine("Returning to menu...");
+                    return;
+                }
+
+                if (!Guid.TryParse(input, out Guid id))
+                {
+                    Console.WriteLine("Error: Please enter a valid product Id! Try again.\n");
+                    continue;
+                }
+
+                Product product = _products.FirstOrDefault(p => p.Id == id);
+
+                if (product == null)
+                {
+                    Console.WriteLine("Error: Product not found! Please try again.\n");
+                    continue;
+                }
+
+                productToShow = product;
+                break;
             }
 
-            Product product = _products.FirstOrDefault(p => p.Id == id);
-
-            if (product != null)
-            {
-                product.PrintInfo();
-            }
-            else
-            {
-                Console.WriteLine("Error: Product not found!");
-            }
+            productToShow.PrintInfo();
         }
         public void ShowAllProducts()
         {
+            LoadData();
             Console.Clear();
             Console.WriteLine("==================================================================");
             Console.WriteLine(string.Format("| {0,-36} | {1,-10} | {2,-8} |", "PRODUCT ID", "NAME", "STOCK"));
@@ -168,41 +247,74 @@ namespace MiniProject.Utilities
         //}
         public void RefillProduct()
         {
-            Console.Write("Enter the ID of the product you want to refill: ");
-            if (!Guid.TryParse(Console.ReadLine(), out Guid id))
+            Product productToRefill = null;
+            int amount = 0;
+
+            while (true)
             {
-                Console.WriteLine("Error: Please enter a valid product Id!");
-                return;
+                ShowAllProducts();
+                Console.Write("\nEnter the ID of the product you want to refill (or '0' to cancel): ");
+                string? input = Console.ReadLine()?.Trim();
+
+                if (input?.ToLower() == "menu")
+                {
+                    Console.WriteLine("Returning to menu...");
+                    return;
+                }
+
+                if (input == "0")
+                {
+                    Console.WriteLine("Operation cancelled. Returning to menu...");
+                    return;
+                }
+
+                if (!Guid.TryParse(input, out Guid id))
+                {
+                    Console.WriteLine("Error: Please enter a valid product Id! Try again.\n");
+                    Console.ReadLine();
+                    continue;
+                }
+
+                Product product = _products.FirstOrDefault(p => p.Id == id);
+
+                if (product == null)
+                {
+                    Console.WriteLine($"Error: Product with ID {id} not found. Please try again.\n");
+                    Console.ReadLine();
+                    continue;
+                }
+
+                productToRefill = product;
+                break;
             }
 
-            Product product = _products.FirstOrDefault(p => p.Id == id);
-
-            if (product == null)
+            while (true)
             {
-                Console.WriteLine($"Error: Product with ID {id} not found.");
-                return;
+                Console.Write($"Current stock for '{productToRefill.Name}' is {productToRefill.Stock}. Enter the amount to add (or '0' to cancel): ");
+                string? inputAmountStr = Console.ReadLine()?.Trim();
+
+                if (inputAmountStr?.ToLower() == "menu")
+                {
+                    Console.WriteLine("Returning to menu...");
+                    return;
+                }
+
+                if (!int.TryParse(inputAmountStr, out int inputAmount) || inputAmount <= 0)
+                {
+                    Console.WriteLine("Error: Refill amount must be a positive number! Please try again.\n");
+                    Console.ReadLine();
+                    continue;
+                }
+
+                amount = inputAmount;
+                break;
             }
 
-            Console.Write($"Current stock for '{product.Name}' is {product.Stock}. Enter the amount to add: ");
-            if (!int.TryParse(Console.ReadLine(), out int amount) || amount <= 0)
-            {
-                Console.WriteLine("Error: Refill amount must be a positive number!");
-                return;
-            }
-
-            product.Stock += amount;
+            productToRefill.Stock += amount;
             SaveData();
-            Console.WriteLine($"{amount} units added. New stock for '{product.Name}': {product.Stock}");
-        }
-        private void LoadData()
-        {
-            _products = Repository.Deserialize<Product>(_productFilePath) ?? new List<Product>();
+            Console.WriteLine($"{amount} units added. New stock for '{productToRefill.Name}': {productToRefill.Stock}");
         }
 
-        private void SaveData()
-        {
-            Repository.Serialize(_productFilePath, _products);
-        }
 
         public void CheckLowStockAlert()
         {
@@ -218,7 +330,7 @@ namespace MiniProject.Utilities
             }
 
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("\n⚠️  ============= LOW STOCK ALERT =============");
+            Console.WriteLine("\n  ============= LOW STOCK ALERT =============");
             Console.WriteLine($"The following products have less than {threshold} items left!");
             Console.WriteLine("==============================================");
             Console.ResetColor();
@@ -230,15 +342,22 @@ namespace MiniProject.Utilities
                 Console.ResetColor();
 
                 Console.Write($"| ID: {prod.Id} | CURRENT STOCK: ");
-                //Console.WriteLine($"| ID: {prod.Id} | CURRENT STOCK: {prod.Stock} left");
+                
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine($"{prod.Stock} left");
                 Console.ResetColor();
             }
 
-            //Console.ForegroundColor = ConsoleColor.Red;
-            //Console.WriteLine("==============================================\n");
-            //Console.ResetColor();
+            
+        }
+        private void LoadData()
+        {
+            _products = Repository.Deserialize<Product>(_productFilePath) ?? new List<Product>();
+        }
+
+        private void SaveData()
+        {
+            Repository.Serialize(_productFilePath, _products);
         }
 
     }

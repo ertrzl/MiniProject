@@ -69,7 +69,7 @@ namespace MiniProject
                 Console.Write(counter[i % 4]);
                 Thread.Sleep(250); 
                 Console.Write("\b"); 
-                Console.WriteLine(" Done! ");
+                
             }
 
         }
